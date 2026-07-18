@@ -12,7 +12,7 @@
 - ☁️ MongoDB Database
 - ⚡ REST API using Express.js
 
-## Home Page
+## Preview
 
 ![Home Page](images/img.png)
 
