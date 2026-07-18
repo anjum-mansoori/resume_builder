@@ -34,6 +34,3 @@ Deployment
 - Vercel
 - Render
 - MongoDB Atlas
-- Vercel
-- Render
-- MongoDB Atlas
