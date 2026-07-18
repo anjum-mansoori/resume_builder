@@ -12,10 +12,6 @@
 - ☁️ MongoDB Database
 - ⚡ REST API using Express.js
 
-## Preview
-
-![Home Page](images/img.png)
-
 - ## 🛠️ Tech Stack
 
 Frontend
