@@ -13,28 +13,42 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/auth/login`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email,
-                    password
-                })
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/api/auth/login`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password,
+                    }),
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                toast.error(data.message);
+                return;
             }
-        );
 
-        const data = await response.json();
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("name", data.name);
 
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("name", data.name);
-        toast.success("Login Successful!");
-        navigate("/dashboard");
-        setEmail("")
-        setPassword("")
+            toast.success(data.message);
+
+            navigate("/dashboard");
+
+            setEmail("");
+            setPassword("");
+
+        } catch (error) {
+            toast.error("Something went wrong!");
+            console.error(error);
+        }
     };
 
     return (
